@@ -160,11 +160,11 @@ public class Graph extends AppCompatActivity {
             {
                 Log.d("populateGraph: ", e.toString());
             }
-            series.appendData(new DataPoint(x,exerciseData.getInt(4)),true,exerciseData.getCount());
+            series.appendData(new DataPoint(x,exerciseData.getInt(3)),true,);
             Log.d("populateGraph DATAPOINT:", x.toString() + " " + exerciseData.getInt(3));
         }
         graphView.getGridLabelRenderer().setLabelFormatter(new DateAsXAxisLabelFormatter(this));
-        //graphView.getGridLabelRenderer().setNumHorizontalLabels(exerciseData.getCount());
+        graphView.getGridLabelRenderer().setNumHorizontalLabels(exerciseData.getCount());
         graphView.addSeries(series);
     }
 
