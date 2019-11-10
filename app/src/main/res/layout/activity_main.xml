@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/lbTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="108dp"
+        android:layout_marginBottom="59dp"
+        android:text="@string/menu_title"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnTrack"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnTrack"
+        style="@android:style/Widget.Material.Button.Colored"
+        android:layout_width="210dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="11dp"
+        android:text="@string/track"
+        app:layout_constraintBottom_toTopOf="@+id/btnCreate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lbTitle" />
+
+    <Button
+        android:id="@+id/btnCreate"
+        style="@android:style/Widget.Material.Button.Colored"
+        android:layout_width="210dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/create"
+        app:layout_constraintBottom_toTopOf="@+id/btnProgress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnTrack" />
+
+    <Button
+        android:id="@+id/btnProgress"
+        style="@android:style/Widget.Material.Button.Colored"
+        android:layout_width="210dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="9dp"
+        android:text="@string/progress"
+        app:layout_constraintBottom_toTopOf="@+id/btnSetting"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnCreate" />
+
+    <Button
+        android:id="@+id/btnSetting"
+        style="@android:style/Widget.Material.Button.Colored"
+        android:layout_width="210dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="305dp"
+        android:text="@string/settings"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnProgress" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

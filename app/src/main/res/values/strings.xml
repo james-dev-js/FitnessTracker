@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">FitnessTracker</string>
+    <string name="menu_title">Workout Tracker</string>
+    <string name="track">Track a Workout</string>
+    <string name="create">Create/Edit a Workout</string>
+    <string name="progress">Your Progress</string>
+    <string name="settings">Settings</string>
+    <string name="itemtest">test</string>
+    <string name="arrowright">An arrow facing right</string>
+    <string name="kilograms">Kilograms</string>
+    <string name="reps">Reps</string>
+    <string name="seconds">Time(s)</string>
+    <string name="NewWorkout">Workout Name</string>
+    <string name="addCreate">Create a new workout</string>
+    <string name="addExercise">Create a new Exercise</string>
+    <string name="NewExercise">Exercise Name</string>
+    <string name="NewExerciseDesc">Exercise Description</string>
+    <string name="NewExerciseURL">An example video</string>
+    <string name="NewExerciseReps">Default Reps required</string>
+    <string name="NewExerciseKg">Weight that is being lifted</string>
+    <string name="cancel">Cancel</string>
+    <string name="add">Add</string>
+    <string name="done">Done</string>
+    <string name="editExercise">Edit an Exercise</string>
+    <string name="graphtype">Select a type of breakdown</string>
+</resources>

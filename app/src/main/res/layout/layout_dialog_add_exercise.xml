@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:padding="16dp">
+
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+
+    <EditText
+        android:id="@+id/add_Exercise_Name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/NewExercise"
+        android:inputType="textPersonName"
+        android:layout_below="@id/spinner"/>
+    <EditText
+        android:id="@+id/add_Exercise_Desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/NewExerciseDesc"
+        android:inputType="textPersonName"
+        android:layout_below="@id/add_Exercise_Name"/>
+    <EditText
+        android:id="@+id/add_Exercise_URL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/NewExerciseURL"
+        android:inputType="textPersonName"
+        android:layout_below="@id/add_Exercise_Desc"/>
+    <EditText
+        android:id="@+id/add_Exercise_Reps"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/NewExerciseReps"
+        android:inputType="textPersonName"
+        android:layout_below="@id/add_Exercise_URL"/>
+
+    <EditText
+        android:id="@+id/add_Exercise_KG"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/NewExerciseKg"
+        android:inputType="textPersonName"
+        android:layout_below="@id/add_Exercise_Reps"/>
+
+
+</RelativeLayout>

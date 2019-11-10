@@ -1,0 +1,143 @@
+@startuml
+
+title __APP's Class Diagram__\n
+
+  namespace com.example.fitnesstracker {
+    namespace AdaptersFolder {
+      class com.example.fitnesstracker.AdaptersFolder.ExerciseAdapter {
+      }
+    }
+  }
+  
+
+  namespace com.example.fitnesstracker {
+    namespace AdaptersFolder {
+      class com.example.fitnesstracker.AdaptersFolder.WorkoutAdapter {
+      }
+    }
+  }
+  
+
+  namespace com.example.fitnesstracker {
+    class com.example.fitnesstracker.BuildConfig {
+    }
+  }
+  
+
+  namespace com.example.fitnesstracker {
+    class com.example.fitnesstracker.CreateWorkout {
+    }
+  }
+  
+
+  namespace com.example.fitnesstracker {
+    namespace Database {
+      class com.example.fitnesstracker.Database.DatabaseHelper {
+      }
+    }
+  }
+  
+
+  namespace com.example.fitnesstracker {
+    namespace Dialogs {
+      class com.example.fitnesstracker.Dialogs.ExerciseAddDialog {
+      }
+    }
+  }
+  
+
+  namespace com.example.fitnesstracker {
+    namespace Dialogs {
+      class com.example.fitnesstracker.Dialogs.ExerciseEditDialog {
+      }
+    }
+  }
+  
+
+  namespace com.example.fitnesstracker {
+    namespace Dialogs {
+      class com.example.fitnesstracker.Dialogs.WorkoutAddDialog {
+      }
+    }
+  }
+  
+
+  namespace com.example.fitnesstracker {
+    class com.example.fitnesstracker.Exercise {
+    }
+  }
+  
+
+  namespace com.example.fitnesstracker {
+    class com.example.fitnesstracker.Graph {
+    }
+  }
+  
+
+  namespace com.example.fitnesstracker {
+    class com.example.fitnesstracker.MainActivity {
+    }
+  }
+  
+
+  namespace com.example.fitnesstracker {
+    class com.example.fitnesstracker.TrackWorkout {
+    }
+  }
+  
+
+  namespace com.example.fitnesstracker {
+    class com.example.fitnesstracker.WorkoutActivity {
+    }
+  }
+  
+
+  namespace com.example.fitnesstracker {
+    class com.example.fitnesstracker.WorkoutEditActivity {
+    }
+  }
+  
+
+  com.example.fitnesstracker.AdaptersFolder.ExerciseAdapter -up-|> androidx.recyclerview.widget.RecyclerView.Adapter
+  com.example.fitnesstracker.AdaptersFolder.ExerciseAdapter o-- com.example.fitnesstracker.Database.DatabaseHelper : mDb
+  com.example.fitnesstracker.AdaptersFolder.ExerciseAdapter o-- com.example.fitnesstracker.AdaptersFolder.ExerciseAdapter.OnExerciseListener : mOnExerciseListener
+  com.example.fitnesstracker.AdaptersFolder.WorkoutAdapter -up-|> androidx.recyclerview.widget.RecyclerView.Adapter
+  com.example.fitnesstracker.AdaptersFolder.WorkoutAdapter o-- com.example.fitnesstracker.Database.DatabaseHelper : mDb
+  com.example.fitnesstracker.AdaptersFolder.WorkoutAdapter o-- com.example.fitnesstracker.AdaptersFolder.WorkoutAdapter.OnWorkoutListener : mOnWorkoutListener
+  com.example.fitnesstracker.CreateWorkout .up.|> com.example.fitnesstracker.AdaptersFolder.WorkoutAdapter.OnWorkoutListener
+  com.example.fitnesstracker.CreateWorkout .up.|> com.example.fitnesstracker.Dialogs.WorkoutAddDialog.WorkoutAddDialogListener
+  com.example.fitnesstracker.CreateWorkout -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.fitnesstracker.CreateWorkout o-- com.example.fitnesstracker.Database.DatabaseHelper : db
+  com.example.fitnesstracker.Database.DatabaseHelper -up-|> android.database.sqlite.SQLiteOpenHelper
+  com.example.fitnesstracker.Dialogs.ExerciseAddDialog -up-|> androidx.appcompat.app.AppCompatDialogFragment
+  com.example.fitnesstracker.Dialogs.ExerciseAddDialog o-- com.example.fitnesstracker.Dialogs.ExerciseAddDialog.ExerciseAddDialogListener : listener
+  com.example.fitnesstracker.Dialogs.ExerciseEditDialog -up-|> androidx.appcompat.app.AppCompatDialogFragment
+  com.example.fitnesstracker.Dialogs.ExerciseEditDialog o-- com.example.fitnesstracker.Database.DatabaseHelper : db
+  com.example.fitnesstracker.Dialogs.ExerciseEditDialog o-- com.example.fitnesstracker.Dialogs.ExerciseEditDialog.ExerciseEditDialogListener : listener
+  com.example.fitnesstracker.Dialogs.WorkoutAddDialog -up-|> androidx.appcompat.app.AppCompatDialogFragment
+  com.example.fitnesstracker.Dialogs.WorkoutAddDialog o-- com.example.fitnesstracker.Dialogs.WorkoutAddDialog.WorkoutAddDialogListener : listener
+  com.example.fitnesstracker.Graph -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.fitnesstracker.Graph o-- com.example.fitnesstracker.Database.DatabaseHelper : db
+  com.example.fitnesstracker.MainActivity -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.fitnesstracker.MainActivity o-- com.example.fitnesstracker.Database.DatabaseHelper : myDB
+  com.example.fitnesstracker.TrackWorkout .up.|> com.example.fitnesstracker.AdaptersFolder.WorkoutAdapter.OnWorkoutListener
+  com.example.fitnesstracker.TrackWorkout -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.fitnesstracker.TrackWorkout o-- com.example.fitnesstracker.Database.DatabaseHelper : db
+  com.example.fitnesstracker.WorkoutActivity .up.|> com.example.fitnesstracker.AdaptersFolder.ExerciseAdapter.OnExerciseListener
+  com.example.fitnesstracker.WorkoutActivity -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.fitnesstracker.WorkoutActivity o-- com.example.fitnesstracker.Database.DatabaseHelper : db
+  com.example.fitnesstracker.WorkoutEditActivity .up.|> com.example.fitnesstracker.AdaptersFolder.ExerciseAdapter.OnExerciseListener
+  com.example.fitnesstracker.WorkoutEditActivity .up.|> com.example.fitnesstracker.Dialogs.ExerciseAddDialog.ExerciseAddDialogListener
+  com.example.fitnesstracker.WorkoutEditActivity .up.|> com.example.fitnesstracker.Dialogs.ExerciseEditDialog.ExerciseEditDialogListener
+  com.example.fitnesstracker.WorkoutEditActivity -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.fitnesstracker.WorkoutEditActivity o-- com.example.fitnesstracker.Database.DatabaseHelper : db
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml
