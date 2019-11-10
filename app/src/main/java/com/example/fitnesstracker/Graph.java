@@ -160,7 +160,7 @@ public class Graph extends AppCompatActivity {
             {
                 Log.d("populateGraph: ", e.toString());
             }
-            series.appendData(new DataPoint(x,exerciseData.getInt(3)),true,);
+            series.appendData(new DataPoint(x,exerciseData.getInt(3)),true,exerciseData.getCount());
             Log.d("populateGraph DATAPOINT:", x.toString() + " " + exerciseData.getInt(3));
         }
         graphView.getGridLabelRenderer().setLabelFormatter(new DateAsXAxisLabelFormatter(this));
