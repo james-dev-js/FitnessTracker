@@ -25,6 +25,12 @@ title __APP's Class Diagram__\n
   
 
   namespace com.example.fitnesstracker {
+    class com.example.fitnesstracker.BuildConfig {
+    }
+  }
+  
+
+  namespace com.example.fitnesstracker {
     class com.example.fitnesstracker.CreateWorkout {
     }
   }

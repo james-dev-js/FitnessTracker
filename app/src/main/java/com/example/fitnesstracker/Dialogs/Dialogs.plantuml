@@ -5,6 +5,7 @@ title __DIALOGS's Class Diagram__\n
   namespace com.example.fitnesstracker {
     namespace Dialogs {
       class com.example.fitnesstracker.Dialogs.ExerciseAddDialog {
+          - btnadd : Button
           - exerciseDesc : EditText
           - exerciseKg : EditText
           - exerciseName : EditText
@@ -12,6 +13,11 @@ title __DIALOGS's Class Diagram__\n
           - exerciseURL : EditText
           + onAttach()
           + onCreateDialog()
+          - validateDesc()
+          - validateKg()
+          - validateName()
+          - validateReps()
+          - validateURL()
       }
     }
   }
@@ -29,6 +35,7 @@ title __DIALOGS's Class Diagram__\n
   namespace com.example.fitnesstracker {
     namespace Dialogs {
       class com.example.fitnesstracker.Dialogs.ExerciseEditDialog {
+          - btnadd : Button
           - exerciseDesc : EditText
           - exerciseKg : EditText
           - exerciseName : EditText
@@ -38,6 +45,11 @@ title __DIALOGS's Class Diagram__\n
           + ExerciseEditDialog()
           + onAttach()
           + onCreateDialog()
+          - validateDesc()
+          - validateKg()
+          - validateName()
+          - validateReps()
+          - validateURL()
       }
     }
   }

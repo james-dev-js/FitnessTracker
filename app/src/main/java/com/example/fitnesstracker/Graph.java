@@ -149,7 +149,29 @@ public class Graph extends AppCompatActivity {
                 break;
             }
         }
+        Cursor minMax = db.getSavedExerciseData(res.getInt(0),exc.getInt(0));
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        Date minX = Calendar.getInstance().getTime();
+        minMax.moveToFirst();
+        try {
+
+            minX = dateFormat.parse(minMax.getString(5));
+        } catch (Exception e)
+        {
+            Log.d("populateGraph: ", e.toString());
+        }
+        graphView.getViewport().setMinX(minX.getTime());
+        Date maxX = Calendar.getInstance().getTime();
+        minMax.moveToLast();
+        try {
+
+            maxX = dateFormat.parse(minMax.getString(5));
+        } catch (Exception e)
+        {
+            Log.d("populateGraph: ", e.toString());
+        }
+        graphView.getViewport().setMaxX(maxX.getTime());
+        graphView.getViewport().setXAxisBoundsManual(true);
         Cursor exerciseData = db.getSavedExerciseData(res.getInt(0),exc.getInt(0));
         Date x = Calendar.getInstance().getTime();
         while(exerciseData.moveToNext()){
@@ -160,31 +182,11 @@ public class Graph extends AppCompatActivity {
             {
                 Log.d("populateGraph: ", e.toString());
             }
-            series.appendData(new DataPoint(x,exerciseData.getInt(3)),true,exerciseData.getCount());
+            series.appendData(new DataPoint(x,exerciseData.getInt(3)),true,(int)maxX.getTime());
             Log.d("populateGraph DATAPOINT:", x.toString() + " " + exerciseData.getInt(3));
         }
         graphView.getGridLabelRenderer().setLabelFormatter(new DateAsXAxisLabelFormatter(this));
-        Date minX = Calendar.getInstance().getTime();
-        exerciseData.moveToFirst();
-        try {
 
-            minX = dateFormat.parse(exerciseData.getString(5));
-        } catch (Exception e)
-        {
-            Log.d("populateGraph: ", e.toString());
-        }
-        graphView.getViewport().setMinX(minX.getTime());
-        Date maxX = Calendar.getInstance().getTime();
-        exerciseData.moveToLast();
-        try {
-
-            maxX = dateFormat.parse(exerciseData.getString(5));
-        } catch (Exception e)
-        {
-            Log.d("populateGraph: ", e.toString());
-        }
-        graphView.getViewport().setMaxX(maxX.getTime());
-        graphView.getViewport().setXAxisBoundsManual(true);
         graphView.getGridLabelRenderer().setNumHorizontalLabels(exerciseData.getCount());
         graphView.addSeries(series);
     }
