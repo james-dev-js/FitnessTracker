@@ -6,8 +6,10 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatDialogFragment;
@@ -18,6 +20,7 @@ import com.example.fitnesstracker.R;
 public class ExerciseEditDialog extends AppCompatDialogFragment {
     private EditText exerciseName,exerciseDesc, exerciseURL, exerciseReps, exerciseKg;
     private ExerciseEditDialogListener listener;
+    private Button btnadd;
     private int exerciseid;
     private DatabaseHelper db;
 
@@ -51,18 +54,23 @@ public class ExerciseEditDialog extends AppCompatDialogFragment {
                     public void onClick(DialogInterface dialogInterface, int i) {
 
                     }
-                })
-                .setPositiveButton(R.string.add, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        String exerciseNameEdit = exerciseName.getText().toString();
-                        String exerciseDescEdit = exerciseDesc.getText().toString();
-                        String exerciseURLEdit= exerciseURL.getText().toString();
-                        String exerciseRepsEdit = exerciseReps.getText().toString();
-                        String exerciseKgEdit = exerciseKg.getText().toString();
-                        listener.ediText(exerciseid,exerciseNameEdit,exerciseDescEdit,exerciseURLEdit,exerciseRepsEdit,exerciseKgEdit);
-                    }
                 });
+        btnadd = view.findViewById(R.id.btnadd);
+        btnadd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String exerciseNameEdit = exerciseName.getText().toString();
+                String exerciseDescEdit = exerciseDesc.getText().toString();
+                String exerciseURLEdit = exerciseURL.getText().toString();
+                String exerciseRepsEdit = exerciseReps.getText().toString();
+                String exerciseKgEdit = exerciseKg.getText().toString();
+                if(!validateName() | !validateDesc() | !validateURL() | !validateReps() | !validateKg()){
+                    return;
+                }
+                listener.ediText(exerciseid,exerciseNameEdit,exerciseDescEdit,exerciseURLEdit,exerciseRepsEdit,exerciseKgEdit);
+                dismiss();
+            }
+        });
 
         return builder.create();
     }
@@ -78,6 +86,68 @@ public class ExerciseEditDialog extends AppCompatDialogFragment {
         }
     }
 
+    private boolean validateName(){
+        String name = exerciseName.getText().toString();
+        if(name.isEmpty())
+        {
+            exerciseName.setError("Field can't be empty");
+            return false;
+        }else {
+            exerciseName.setError(null);
+            return true;
+        }
+    }
+
+    private boolean validateDesc(){
+        String desc = exerciseDesc.getText().toString();
+        if(desc.isEmpty())
+        {
+            exerciseDesc.setError("Field can't be empty");
+            return false;
+        }else {
+            exerciseDesc.setError(null);
+            return true;
+        }
+    }
+
+    private boolean validateURL(){
+        String url = exerciseURL.getText().toString();
+        if(url.isEmpty())
+        {
+            exerciseURL.setError("Field can't be empty");
+            return false;
+        } else if(!Patterns.WEB_URL.matcher(url).matches()){
+            exerciseURL.setError("It must be a proper url");
+            return false;
+        }
+        else {
+            exerciseURL.setError(null);
+            return true;
+        }
+    }
+
+    private boolean validateReps(){
+        String reps = exerciseReps.getText().toString();
+        if(reps.isEmpty())
+        {
+            exerciseReps.setError("Field can't be empty");
+            return false;
+        }else {
+            exerciseReps.setError(null);
+            return true;
+        }
+    }
+    private boolean validateKg(){
+        String kg = exerciseKg.getText().toString();
+        if(kg.isEmpty())
+        {
+            exerciseKg.setError("Field can't be empty");
+            return false;
+        }else {
+            exerciseKg.setError(null);
+            return true;
+        }
+    }
     public interface ExerciseEditDialogListener{
         void ediText(int id, String exerciseName,String exerciseDesc,String exerciseURL,String exerciseReps,String exerciseKg);
     }

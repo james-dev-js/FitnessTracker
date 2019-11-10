@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="16dp">
-
-
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="match_parent"
-        android:layout_height="40dp" />
 
     <EditText
         android:id="@+id/add_Exercise_Name"
@@ -16,31 +12,34 @@
         android:ems="10"
         android:hint="@string/NewExercise"
         android:inputType="textPersonName"
-        android:layout_below="@id/spinner"/>
+        app:errorEnabled="true"/>
     <EditText
         android:id="@+id/add_Exercise_Desc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/NewExerciseDesc"
-        android:inputType="textPersonName"
-        android:layout_below="@id/add_Exercise_Name"/>
+        android:inputType="textLongMessage"
+        android:layout_below="@id/add_Exercise_Name"
+        app:errorEnabled="true" />
     <EditText
         android:id="@+id/add_Exercise_URL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/NewExerciseURL"
-        android:inputType="textPersonName"
-        android:layout_below="@id/add_Exercise_Desc"/>
+        android:inputType="textUri"
+        android:layout_below="@id/add_Exercise_Desc"
+        app:errorEnabled="true"/>
     <EditText
         android:id="@+id/add_Exercise_Reps"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/NewExerciseReps"
-        android:inputType="textPersonName"
-        android:layout_below="@id/add_Exercise_URL"/>
+        android:inputType="number"
+        android:layout_below="@id/add_Exercise_URL"
+        app:errorEnabled="true"/>
 
     <EditText
         android:id="@+id/add_Exercise_KG"
@@ -48,8 +47,16 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/NewExerciseKg"
-        android:inputType="textPersonName"
-        android:layout_below="@id/add_Exercise_Reps"/>
+        android:inputType="number"
+        android:layout_below="@id/add_Exercise_Reps"
+        app:errorEnabled="true"/>
+
+    <Button
+        android:id="@+id/btnadd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/add_Exercise_KG"
+        android:text="@string/add" />
 
 
 </RelativeLayout>

@@ -47,8 +47,8 @@ public class Graph extends AppCompatActivity {
         spnWorkouts = findViewById(R.id.spnWorkout);
         spnExercises = findViewById(R.id.spnExercise);
         graphView.addSeries(series);
-        //graphView.getViewport().setScalable(true);
-        //graphView.getViewport().setScalableY(true);
+        graphView.getViewport().setScalable(true);
+        graphView.getViewport().setScalableY(true);
         ActionBar actionBar = getSupportActionBar();
         if(getSupportActionBar() != null){
             actionBar.setTitle(R.string.progress);
@@ -149,9 +149,9 @@ public class Graph extends AppCompatActivity {
                 break;
             }
         }
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         Cursor exerciseData = db.getSavedExerciseData(res.getInt(0),exc.getInt(0));
         Date x = Calendar.getInstance().getTime();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         while(exerciseData.moveToNext()){
             try {
 
@@ -164,6 +164,27 @@ public class Graph extends AppCompatActivity {
             Log.d("populateGraph DATAPOINT:", x.toString() + " " + exerciseData.getInt(3));
         }
         graphView.getGridLabelRenderer().setLabelFormatter(new DateAsXAxisLabelFormatter(this));
+        Date minX = Calendar.getInstance().getTime();
+        exerciseData.moveToFirst();
+        try {
+
+            minX = dateFormat.parse(exerciseData.getString(5));
+        } catch (Exception e)
+        {
+            Log.d("populateGraph: ", e.toString());
+        }
+        graphView.getViewport().setMinX(minX.getTime());
+        Date maxX = Calendar.getInstance().getTime();
+        exerciseData.moveToLast();
+        try {
+
+            maxX = dateFormat.parse(exerciseData.getString(5));
+        } catch (Exception e)
+        {
+            Log.d("populateGraph: ", e.toString());
+        }
+        graphView.getViewport().setMaxX(maxX.getTime());
+        graphView.getViewport().setXAxisBoundsManual(true);
         graphView.getGridLabelRenderer().setNumHorizontalLabels(exerciseData.getCount());
         graphView.addSeries(series);
     }
